@@ -24,23 +24,19 @@ public class Ellipse extends Polygon {
         else {
             a = p0.x - a;
         }
-        if (b > p0.y)
-        {
+        if (b > p0.y){
             b = b - p0.y;
         }
         else {
             b = p0.y - b;
         }
+        //for cyklus pro 360°
         for (int i = 0; i <=360; i++) {
             double x = a * Math.sin(Math.toRadians(i));
             double y = b * Math.cos(Math.toRadians(i));
             Point p2 = new Point(x+p0.x, y+ p0.y);
             points.add(p2);
         }
-    }
-
-    public void clearEllipse() {
-        this.points.clear();
     }
     public int size() {
         return this.points.size();

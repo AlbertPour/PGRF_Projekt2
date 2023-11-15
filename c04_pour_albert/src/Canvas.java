@@ -84,7 +84,6 @@ public class Canvas {
         panel.addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
-
                 if (e.getButton() == MouseEvent.BUTTON1){
                     raster.clear();
                     if (typeOfMode == 1){
@@ -133,8 +132,8 @@ public class Canvas {
 
             @Override
             public void mouseReleased(MouseEvent e) {
-                raster.clear();
                 if (typeOfMode == 3){
+                    raster.clear();
                     //Vykreslení elipsy
                     int a = e.getX();
                     int b = e.getY();
@@ -147,15 +146,14 @@ public class Canvas {
                     polygonRasterizer.rasterize(polygon);
                 }
                 panel.repaint();
-
             }
         });
         //Zachytávání události pro pohyb myši
         panel.addMouseMotionListener(new MouseMotionAdapter() {
             @Override
             public void mouseDragged(MouseEvent e) {
-                raster.clear();
                 if (typeOfMode == 3){
+                    raster.clear();
                     //Vykreslení elipsy
                     int a = e.getX();
                     int b = e.getY();
@@ -166,6 +164,7 @@ public class Canvas {
 
                 }
                 if (!clickMode) {
+                    raster.clear();
                     p2 = new Point(e.getX(), e.getY());
 
                     if (lastP != null) {
@@ -221,13 +220,6 @@ public class Canvas {
                     ScanLineFiller scanLineFiller= new ScanLineFiller(lineRasterizerGraphics, polygonRasterizer, polygon);
                     scanLineFiller.fill();
                     panel.repaint();
-                }
-            }
-
-            @Override
-            public void keyReleased(KeyEvent e) {
-                if (e.getKeyCode() == KeyEvent.VK_SHIFT) {
-
                 }
             }
         });

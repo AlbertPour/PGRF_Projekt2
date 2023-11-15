@@ -44,7 +44,7 @@ public class ScanLineFiller implements Filler{
 
         }
 
-        for (int y = yMin; y <= yMax; y++) {
+        for (int y = yMin+1; y <= yMax-1; y++) {
             // for each cyklus = pro každej prvek edge z listu edges
             for(Edge edge : edges) {
                 if(edge.hasIntersection(y)) {
@@ -68,7 +68,7 @@ public class ScanLineFiller implements Filler{
         });
 
         for(int i = 0; i < intersections.size(); i += 2) {
-            Line line = new Line(intersections.get(i),intersections.get(i+1),0xff0000);
+            Line line = new Line(intersections.get(i),intersections.get(i+1),0xffffff);
             lineRasterizer.rasterize(line);
         }
 
@@ -80,7 +80,7 @@ public class ScanLineFiller implements Filler{
         int y1 = e.getY1();
         int y2 = e.getY2();
 
-        float k = (x2-x1)/(y2-y1);
+        float k = (x1-x2)/(y1-y2);
         float q = x1-k*y1;
         int x =  (int)(k*y + q);
         Point intersection = new Point(x,y);

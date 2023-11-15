@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 public class Rectangle extends Polygon{
     public Point p1, p3;
-    public int x1,x2,y1,y2;
     private ArrayList<Rectangle> rectangles;
 
 
